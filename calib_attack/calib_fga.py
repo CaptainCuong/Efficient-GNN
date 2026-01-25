@@ -205,17 +205,6 @@ class Calib_FGA(BaseAttack):
         elif strategy == 'under_kl':
             strategy = "under"
             criterion = kl_divergence_with_uniform
-        elif strategy == 'test':
-            strategy = "under"
-            if "criterion" in kwargs:
-                if kwargs["criterion"] == "normal":
-                    criterion = underconfidence_objective
-                elif kwargs["criterion"] == "kl":
-                    criterion = kl_divergence_with_uniform
-                else:
-                    raise ValueError("criterion must be normal or kl")
-            else:
-                raise ValueError("criterion must be provided for test strategy")
         elif strategy == 'target':
             criterion = kl_divergence_target
         elif strategy == 'max':
