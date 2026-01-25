@@ -306,12 +306,12 @@ def save_attack_log(args, attack_results, base_metrics, calibrated_metrics, atta
     }
 
     # Save JSON log
-    json_file = os.path.join(log_dir, f"ugca_rerank_basic_{args.dataset.lower()}_attack_log_{timestamp}.json")
+    json_file = os.path.join(log_dir, f"ugca_rerank_basic_{args.dataset.lower()}_{args.calibration_method.lower()}_attack_log_{timestamp}.json")
     with open(json_file, 'w') as f:
         json.dump(log_data, f, indent=2)
 
     # Save human-readable summary
-    summary_file = os.path.join(log_dir, f"ugca_rerank_basic_{args.dataset.lower()}_attack_summary_{timestamp}.txt")
+    summary_file = os.path.join(log_dir, f"ugca_rerank_basic_{args.dataset.lower()}_{args.calibration_method.lower()}_attack_summary_{timestamp}.txt")
     with open(summary_file, 'w') as f:
         f.write("=" * 80 + "\n")
         f.write("UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY\n")
