@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_230557
+Attack Type: UGCA (rerank_hybridloss_attack)
+Calibration Method: CaGCN
+Dataset: Cora
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.7990
+  ECE: 0.0304
+  Avg Confidence: 0.8634
+
+Calibrated Model:
+  Accuracy: 0.8010
+  ECE: 0.0253
+  Avg Confidence: 0.8398
+
+After Attack:
+  Accuracy: 0.8010
+  ECE: 0.0772
+  Avg Confidence: 0.4976
+  ECE Change: +0.0519
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 744
+Success rate: 74.40%
+Avg confidence reduction: -0.4600
+Avg perturbations: 2.8
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 88.24s
+Average attack time per node: 0.0832s
+Average iteration time per node: 0.0882s
+Min iteration time: 0.0551s
+Max iteration time: 0.1345s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 1708 (true_label=3): 0.3322 -> 0.2339 (-0.0984) [SUCCESS]
+Node 1709 (true_label=2): 0.9966 -> 0.3825 (-0.6141) [SUCCESS]
+Node 1710 (true_label=2): 0.8693 -> 0.1843 (-0.6850) [SUCCESS]
+Node 1711 (true_label=2): 0.9994 -> 0.7066 (-0.2928) [SUCCESS]
+Node 1712 (true_label=2): 0.9927 -> 0.4867 (-0.5059) [SUCCESS]
+Node 1713 (true_label=0): 0.2846 -> 0.2505 (-0.0341) [SUCCESS]
+Node 1714 (true_label=2): 0.9979 -> 0.4684 (-0.5295) [SUCCESS]
+Node 1715 (true_label=2): 0.9963 -> 0.4001 (-0.5962) [SUCCESS]
+Node 1716 (true_label=2): 0.9883 -> 0.3419 (-0.6464) [SUCCESS]
+Node 1717 (true_label=2): 0.9964 -> 0.4606 (-0.5358) [SUCCESS]

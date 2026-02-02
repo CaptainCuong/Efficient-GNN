@@ -1,0 +1,45 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_221306
+Attack Type: UGCA (rerank_attack)
+Calibration Method: MS
+Dataset: Reddit
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9097
+  ECE: 0.0020
+  Avg Confidence: 0.9138
+
+Calibrated Model:
+  Accuracy: 0.8994
+  ECE: 0.0030
+  Avg Confidence: 0.9233
+
+After Attack:
+  Accuracy: 1.0000
+  ECE: 0.0000
+  Avg Confidence: 0.5885
+  ECE Change: -0.0030
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1
+Successful attacks: 1
+Success rate: 100.00%
+Avg confidence reduction: -0.4026
+Avg perturbations: 5.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 5.14s
+Average attack time per node: 5.0603s
+Average iteration time per node: 5.1369s
+Min iteration time: 5.1369s
+Max iteration time: 5.1369s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2378 (true_label=18): 0.9910 -> 0.5885 (-0.4026) [SUCCESS]
