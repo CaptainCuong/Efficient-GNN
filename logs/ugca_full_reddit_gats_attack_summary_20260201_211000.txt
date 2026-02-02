@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_211000
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: GATS
+Dataset: Reddit
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9115
+  ECE: 0.0020
+  Avg Confidence: 0.9107
+
+Calibrated Model:
+  Accuracy: 0.9115
+  ECE: 0.0025
+  Avg Confidence: 0.8855
+
+After Attack:
+  Accuracy: 0.9000
+  ECE: 0.0098
+  Avg Confidence: 0.6479
+  ECE Change: +0.0073
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 954
+Success rate: 95.40%
+Avg confidence reduction: -0.2497
+Avg perturbations: 4.2
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 4984.71s
+Average attack time per node: 4.9024s
+Average iteration time per node: 4.9847s
+Min iteration time: 4.3979s
+Max iteration time: 6.3789s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2 (true_label=15): 0.9901 -> 0.6573 (-0.3328) [SUCCESS]
+Node 4 (true_label=18): 0.9743 -> 0.7885 (-0.1859) [SUCCESS]
+Node 6 (true_label=15): 0.9862 -> 0.7750 (-0.2112) [SUCCESS]
+Node 7 (true_label=0): 0.9986 -> 0.9865 (-0.0121) [SUCCESS]
+Node 8 (true_label=3): 0.9963 -> 0.9945 (-0.0019) [SUCCESS]
+Node 10 (true_label=6): 0.8631 -> 0.8098 (-0.0534) [SUCCESS]
+Node 21 (true_label=15): 0.9889 -> 0.9788 (-0.0101) [SUCCESS]
+Node 22 (true_label=37): 0.5306 -> 0.4083 (-0.1223) [SUCCESS]
+Node 24 (true_label=15): 0.9808 -> 0.9537 (-0.0271) [SUCCESS]
+Node 25 (true_label=14): 0.9811 -> 0.9589 (-0.0222) [SUCCESS]

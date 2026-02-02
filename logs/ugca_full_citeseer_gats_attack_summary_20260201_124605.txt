@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_124605
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: GATS
+Dataset: CiteSeer
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.6760
+  ECE: 0.0570
+  Avg Confidence: 0.8226
+
+Calibrated Model:
+  Accuracy: 0.6760
+  ECE: 0.0400
+  Avg Confidence: 0.6601
+
+After Attack:
+  Accuracy: 0.6760
+  ECE: 0.1164
+  Avg Confidence: 0.2924
+  ECE Change: +0.0764
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 978
+Success rate: 97.80%
+Avg confidence reduction: -0.3760
+Avg perturbations: 4.1
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 262.70s
+Average attack time per node: 0.2537s
+Average iteration time per node: 0.2627s
+Min iteration time: 0.2068s
+Max iteration time: 1.4530s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2312 (true_label=4): 0.6121 -> 0.1981 (-0.4140) [SUCCESS]
+Node 2313 (true_label=5): 0.4730 -> 0.2436 (-0.2294) [SUCCESS]
+Node 2314 (true_label=4): 0.5120 -> 0.2377 (-0.2743) [SUCCESS]
+Node 2315 (true_label=4): 0.6222 -> 0.2645 (-0.3577) [SUCCESS]
+Node 2316 (true_label=4): 0.9228 -> 0.7469 (-0.1758) [SUCCESS]
+Node 2317 (true_label=1): 0.6036 -> 0.2576 (-0.3460) [SUCCESS]
+Node 2318 (true_label=4): 0.6636 -> 0.2459 (-0.4178) [SUCCESS]
+Node 2319 (true_label=2): 0.3398 -> 0.2515 (-0.0883) [SUCCESS]
+Node 2320 (true_label=3): 0.6853 -> 0.2775 (-0.4078) [SUCCESS]
+Node 2321 (true_label=3): 0.6549 -> 0.2688 (-0.3861) [SUCCESS]

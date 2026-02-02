@@ -1,0 +1,45 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_211037
+Attack Type: UGCA (rerank_attack)
+Calibration Method: GATS
+Dataset: CoraML
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8982
+  ECE: 0.0192
+  Avg Confidence: 0.9476
+
+Calibrated Model:
+  Accuracy: 0.8982
+  ECE: 0.0179
+  Avg Confidence: 0.9071
+
+After Attack:
+  Accuracy: 1.0000
+  ECE: 0.0000
+  Avg Confidence: 0.3396
+  ECE Change: -0.0179
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1
+Successful attacks: 1
+Success rate: 100.00%
+Avg confidence reduction: -0.6580
+Avg perturbations: 5.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 0.24s
+Average attack time per node: 0.2311s
+Average iteration time per node: 0.2391s
+Min iteration time: 0.2391s
+Max iteration time: 0.2391s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2378 (true_label=4): 0.9976 -> 0.3396 (-0.6580) [SUCCESS]

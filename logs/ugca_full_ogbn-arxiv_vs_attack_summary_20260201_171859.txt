@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_171859
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: VS
+Dataset: Ogbn-arxiv
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.5449
+  ECE: 0.0087
+  Avg Confidence: 0.4651
+
+Calibrated Model:
+  Accuracy: 0.5721
+  ECE: 0.0052
+  Avg Confidence: 0.5626
+
+After Attack:
+  Accuracy: 0.5980
+  ECE: 0.0169
+  Avg Confidence: 0.2674
+  ECE Change: +0.0118
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 887
+Success rate: 88.70%
+Avg confidence reduction: -0.3450
+Avg perturbations: 3.3
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 5005.67s
+Average attack time per node: 4.9679s
+Average iteration time per node: 5.0057s
+Min iteration time: 4.0737s
+Max iteration time: 10.6017s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 54 (true_label=16): 0.8925 -> 0.5452 (-0.3473) [SUCCESS]
+Node 66 (true_label=30): 0.8550 -> 0.1438 (-0.7112) [SUCCESS]
+Node 68 (true_label=27): 0.6142 -> 0.3012 (-0.3131) [SUCCESS]
+Node 69 (true_label=28): 0.6093 -> 0.1693 (-0.4400) [SUCCESS]
+Node 70 (true_label=24): 0.3989 -> 0.2967 (-0.1022) [SUCCESS]
+Node 71 (true_label=16): 0.7485 -> 0.3285 (-0.4200) [SUCCESS]
+Node 72 (true_label=24): 0.6417 -> 0.3120 (-0.3297) [SUCCESS]
+Node 73 (true_label=28): 0.9610 -> 0.2529 (-0.7081) [SUCCESS]
+Node 74 (true_label=16): 0.8967 -> 0.2077 (-0.6890) [SUCCESS]
+Node 75 (true_label=28): 0.4223 -> 0.1993 (-0.2230) [SUCCESS]

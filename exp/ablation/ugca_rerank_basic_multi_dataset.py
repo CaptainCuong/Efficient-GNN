@@ -43,7 +43,7 @@ from calibration.DCGC import DCGC
 from calibration.ETS import ETS
 from calibration.GETS import GETSCalibrator as GETS
 from calibration.GATS import GATSCalibrator as GATS
-from utils.ece import calculate_average_ece
+import utils.ece as ece
 from calibration.utils import accuracy
 
 
@@ -232,10 +232,7 @@ def evaluate_model_calibration(model, features, adj, labels, test_mask, model_na
     model.eval()
     with torch.no_grad():
         logits = model(features, adj)
-        if hasattr(logits, 'exp'):  # log_softmax output (from TS calibrated model)
-            probs = logits.exp()
-        else:  # raw logits
-            probs = F.softmax(logits, dim=1)
+        probs = F.softmax(logits, dim=1)
 
         test_probs = probs[test_mask]
         test_labels = labels[test_mask]
@@ -246,14 +243,14 @@ def evaluate_model_calibration(model, features, adj, labels, test_mask, model_na
 
         # ECE
         num_classes = test_probs.shape[1]
-        ece = calculate_average_ece(test_probs.cpu().numpy(), test_labels.cpu().numpy(), num_classes, logits=False)
+        ece_score = ece.calculate_average_ece(test_probs.cpu().numpy(), test_labels.cpu().numpy(), num_classes, logits=False)
 
         # Average confidence
         confidence = torch.max(test_probs, dim=1)[0]
         avg_confidence = confidence.mean().item()
 
-        print(f"{model_name} - Accuracy: {acc:.4f} | ECE: {ece:.4f} | Avg Confidence: {avg_confidence:.4f}")
-        return acc, ece, avg_confidence
+        print(f"{model_name} - Accuracy: {acc:.4f} | ECE: {ece_score:.4f} | Avg Confidence: {avg_confidence:.4f}")
+        return acc, ece_score, avg_confidence
 
 
 def save_attack_log(args, attack_results, base_metrics, calibrated_metrics, attacked_metrics, experiment_config, log_dir="./logs"):
@@ -363,7 +360,8 @@ def save_attack_log(args, attack_results, base_metrics, calibrated_metrics, atta
         f.write("-" * 40 + "\n")
         for result in attack_results[:10]:
             status = "SUCCESS" if result['label_preserved'] and result['conf_change'] < 0 else "FAILED"
-            f.write(f"Node {result['node']}: {result['original_conf']:.4f} -> {result['attacked_conf']:.4f} "
+            f.write(f"Node {result['node']} (true_label={result['true_label']}): "
+                   f"{result['original_conf']:.4f} -> {result['attacked_conf']:.4f} "
                    f"({result['conf_change']:+.4f}) [{status}]\n")
 
     print(f"\nAttack logs saved:")
@@ -390,10 +388,7 @@ def run_attack_on_nodes(attack_model, calibrated_model, features, adj, labels, t
         # Get original prediction and confidence
         with torch.no_grad():
             original_logits = calibrated_model(features, adj)
-            if hasattr(original_logits, 'exp'):
-                original_probs = original_logits.exp()
-            else:
-                original_probs = F.softmax(original_logits, dim=1)
+            original_probs = F.softmax(original_logits, dim=1)
             original_pred = original_probs[node].argmax().item()
             original_conf = original_probs[node].max().item()
 
@@ -423,10 +418,7 @@ def run_attack_on_nodes(attack_model, calibrated_model, features, adj, labels, t
         # Evaluate attacked model
         with torch.no_grad():
             attacked_logits = calibrated_model(features, modified_adj)
-            if hasattr(attacked_logits, 'exp'):
-                attacked_probs = attacked_logits.exp()
-            else:
-                attacked_probs = F.softmax(attacked_logits, dim=1)
+            attacked_probs = F.softmax(attacked_logits, dim=1)
             attacked_pred = attacked_probs[node].argmax().item()
             attacked_conf = attacked_probs[node].max().item()
 
@@ -435,13 +427,16 @@ def run_attack_on_nodes(attack_model, calibrated_model, features, adj, labels, t
 
         iteration_time = time.time() - iteration_start_time
 
-        # Store results
+        # Store results with full probability arrays
         result = {
             'node': int(node),
+            'true_label': int(labels[node].item()),
             'original_pred': int(original_pred),
             'original_conf': float(original_conf),
+            'original_probs': original_probs[node].cpu().numpy().tolist(),
             'attacked_pred': int(attacked_pred),
             'attacked_conf': float(attacked_conf),
+            'attacked_probs': attacked_probs[node].cpu().numpy().tolist(),
             'conf_change': float(attacked_conf - original_conf),
             'perturbations': int(n_perturb[0] if n_perturb else 0),
             'label_preserved': bool(original_pred == attacked_pred),
@@ -472,7 +467,7 @@ def run_attack_on_nodes(attack_model, calibrated_model, features, adj, labels, t
     print(f"  Average attack time per node: {avg_attack_time:.4f}s")
     print(f"  Average iteration time per node: {avg_iteration_time:.4f}s")
 
-    return attack_results, modified_adj
+    return attack_results
 
 
 def parse_arguments():
@@ -489,8 +484,8 @@ def parse_arguments():
                         help='Number of perturbations allowed for attack (default: 5)')
 
     # Attack configuration arguments
-    parser.add_argument('--attack-nodes', type=int, default=100,
-                        help='Number of nodes to attack (default: 100)')
+    parser.add_argument('--attack-nodes', type=int, default=10000,
+                        help='Number of nodes to attack (default: 10000)')
 
     # Large dataset handling
     parser.add_argument('--max-nodes', type=int, default=None,
@@ -581,7 +576,7 @@ def main():
     # Set default max_nodes for large datasets
     if args.max_nodes is None:
         if args.dataset.lower() in ['pubmed', 'ogbn-arxiv', 'photo', 'physics', 'reddit']:
-            args.max_nodes = 5000  # Default limit for large datasets
+            args.max_nodes = 20000  # Default limit for large datasets
             print(f"Large dataset detected. Limiting to {args.max_nodes} nodes. Use --max-nodes to change.")
 
     # Load data
@@ -604,6 +599,25 @@ def main():
     data.val_mask = data.val_mask.to(device)
     data.test_mask = data.test_mask.to(device)
 
+    # Further split validation set into validation and calibration sets
+    val_indices = data.val_mask.nonzero(as_tuple=True)[0]
+    calibration_size = int(0.5 * len(val_indices))
+    calibration_indices = val_indices[:calibration_size]
+    new_val_indices = val_indices[calibration_size:]
+
+    # Update masks
+    calibration_mask = torch.zeros(data.num_nodes, dtype=torch.bool, device=device)
+    calibration_mask[calibration_indices] = True
+
+    new_val_mask = torch.zeros(data.num_nodes, dtype=torch.bool, device=device)
+    new_val_mask[new_val_indices] = True
+
+    # Use new_val_mask for model validation, calibration_mask for calibration
+    data.val_mask = new_val_mask
+    data.calibration_mask = calibration_mask
+
+    print(f"Split validation set: {len(new_val_indices)} validation nodes, {len(calibration_indices)} calibration nodes")
+
     # Step 1: Train base model
     # Pass nclass explicitly since some dataset names may not be in CompatibleGCN's mapping
     base_model = CompatibleGCN(num_features, nclass=num_classes).to(device)
@@ -622,7 +636,7 @@ def main():
     print(f"APPLYING {args.calibration_method.upper()} CALIBRATION")
     print("="*50)
     calibrated_model = get_calibration_model(
-        args.calibration_method, base_model, features, labels, adj, data.val_mask, num_classes, edge_index, args
+        args.calibration_method, base_model, features, labels, adj, data.calibration_mask, num_classes, edge_index, args
     )
 
     # Evaluate calibrated model
@@ -675,8 +689,8 @@ def main():
         "learning_rate": 0.01,
         "weight_decay": 5e-4
     }
-
-    attack_results, modified_adj = run_attack_on_nodes(
+    test_node_indices = [2378]
+    attack_results = run_attack_on_nodes(
         attack_model=calibrated_model,  # Use calibrated model for gradient computation
         calibrated_model=calibrated_model,  # Attack the calibrated model
         features=features,
@@ -686,18 +700,26 @@ def main():
         budget=budget
     )
 
-    # Evaluate model after attack
+    # Evaluate model after attack using stored probabilities from attack_results
     print("\n" + "="*50)
     print("EVALUATING MODEL AFTER ATTACK")
     print("="*50)
-    attacked_acc, attacked_ece, attacked_conf = evaluate_model_calibration(
-        calibrated_model, features, modified_adj, labels, data.test_mask, "After Attack"
-    )
+
+    # Calculate attacked ECE from stored probabilities
+    attacked_probs = np.array([r["attacked_probs"] for r in attack_results])
+    attacked_labels = np.array([r["true_label"] for r in attack_results])
+    attacked_preds = np.array([r["attacked_pred"] for r in attack_results])
+
+    attacked_acc = np.mean(attacked_preds == attacked_labels)
+    attacked_ece = ece.calculate_average_ece(attacked_probs, attacked_labels, num_classes, logits=False)
+    attacked_conf = np.mean([r["attacked_conf"] for r in attack_results])
+
+    print(f"After Attack - Accuracy: {attacked_acc:.4f} | ECE: {attacked_ece:.4f} | Avg Confidence: {attacked_conf:.4f}")
 
     attacked_metrics = {
-        "accuracy": attacked_acc,
-        "ece": attacked_ece,
-        "avg_confidence": attacked_conf,
+        "accuracy": float(attacked_acc),
+        "ece": float(attacked_ece),
+        "avg_confidence": float(attacked_conf),
     }
 
     print(f"\nECE change after attack: {attacked_ece - calib_ece:+.4f}")

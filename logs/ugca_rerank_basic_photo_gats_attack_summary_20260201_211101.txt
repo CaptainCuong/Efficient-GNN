@@ -1,0 +1,45 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_211101
+Attack Type: UGCA (rerank_attack)
+Calibration Method: GATS
+Dataset: Photo
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9386
+  ECE: 0.0082
+  Avg Confidence: 0.9214
+
+Calibrated Model:
+  Accuracy: 0.9386
+  ECE: 0.0083
+  Avg Confidence: 0.9232
+
+After Attack:
+  Accuracy: 1.0000
+  ECE: 0.0000
+  Avg Confidence: 0.8749
+  ECE Change: -0.0083
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1
+Successful attacks: 1
+Success rate: 100.00%
+Avg confidence reduction: -0.0777
+Avg perturbations: 5.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 0.81s
+Average attack time per node: 0.7993s
+Average iteration time per node: 0.8134s
+Min iteration time: 0.8134s
+Max iteration time: 0.8134s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2378 (true_label=6): 0.9526 -> 0.8749 (-0.0777) [SUCCESS]

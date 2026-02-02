@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_115640
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: VS
+Dataset: CoraML
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8698
+  ECE: 0.0200
+  Avg Confidence: 0.9311
+
+Calibrated Model:
+  Accuracy: 0.8681
+  ECE: 0.0229
+  Avg Confidence: 0.9436
+
+After Attack:
+  Accuracy: 0.8681
+  ECE: 0.0588
+  Avg Confidence: 0.6095
+  ECE Change: +0.0359
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 599
+Successful attacks: 587
+Success rate: 98.00%
+Avg confidence reduction: -0.3410
+Avg perturbations: 4.1
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 141.14s
+Average attack time per node: 0.2269s
+Average iteration time per node: 0.2356s
+Min iteration time: 0.1430s
+Max iteration time: 0.5219s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 11 (true_label=0): 0.9997 -> 0.9322 (-0.0675) [SUCCESS]
+Node 18 (true_label=3): 0.9283 -> 0.6257 (-0.3026) [SUCCESS]
+Node 21 (true_label=4): 0.4263 -> 0.4263 (+0.0000) [FAILED]
+Node 27 (true_label=6): 0.9927 -> 0.7360 (-0.2567) [SUCCESS]
+Node 33 (true_label=6): 0.9989 -> 0.9963 (-0.0026) [SUCCESS]
+Node 34 (true_label=6): 0.9986 -> 0.8943 (-0.1044) [SUCCESS]
+Node 59 (true_label=6): 0.9971 -> 0.9158 (-0.0813) [SUCCESS]
+Node 63 (true_label=6): 0.9971 -> 0.7886 (-0.2085) [SUCCESS]
+Node 64 (true_label=6): 0.9984 -> 0.8017 (-0.1967) [SUCCESS]
+Node 68 (true_label=6): 0.9995 -> 0.6022 (-0.3973) [SUCCESS]

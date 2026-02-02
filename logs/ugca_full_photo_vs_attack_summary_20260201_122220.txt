@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_122220
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: VS
+Dataset: Photo
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9353
+  ECE: 0.0066
+  Avg Confidence: 0.9316
+
+Calibrated Model:
+  Accuracy: 0.9346
+  ECE: 0.0059
+  Avg Confidence: 0.9441
+
+After Attack:
+  Accuracy: 0.9320
+  ECE: 0.0288
+  Avg Confidence: 0.8007
+  ECE Change: +0.0229
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 991
+Success rate: 99.10%
+Avg confidence reduction: -0.1475
+Avg perturbations: 4.7
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 1519.82s
+Average attack time per node: 1.5015s
+Average iteration time per node: 1.5198s
+Min iteration time: 1.0581s
+Max iteration time: 13.0270s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 0 (true_label=6): 0.8608 -> 0.5381 (-0.3227) [SUCCESS]
+Node 2 (true_label=3): 0.9931 -> 0.7740 (-0.2191) [SUCCESS]
+Node 9 (true_label=6): 0.9985 -> 0.9626 (-0.0359) [SUCCESS]
+Node 14 (true_label=6): 0.9685 -> 0.8929 (-0.0756) [SUCCESS]
+Node 20 (true_label=4): 0.9992 -> 0.9977 (-0.0016) [SUCCESS]
+Node 21 (true_label=1): 0.9999 -> 0.9984 (-0.0016) [SUCCESS]
+Node 23 (true_label=6): 0.9968 -> 0.9959 (-0.0009) [SUCCESS]
+Node 27 (true_label=4): 0.9353 -> 0.8618 (-0.0736) [SUCCESS]
+Node 28 (true_label=4): 0.9871 -> 0.9833 (-0.0038) [SUCCESS]
+Node 30 (true_label=1): 0.9871 -> 0.9306 (-0.0565) [SUCCESS]

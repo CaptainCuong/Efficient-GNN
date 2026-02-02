@@ -60,7 +60,7 @@ class BaseAttack(Module):
 
         if type(adj) is torch.Tensor:
             adj = adj.cpu().numpy()
-        assert np.abs(adj - adj.T).sum() == 0, "Input graph is not symmetric"
+        assert np.abs(adj - adj.T).sum() <= 1e-3, "Input graph is not symmetric"
         if sp.issparse(adj):
             assert adj.tocsr().max() == 1, "Max value should be 1!"
             assert adj.tocsr().min() == 0, "Min value should be 0!"

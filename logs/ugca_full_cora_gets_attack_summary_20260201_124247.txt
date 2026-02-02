@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_124247
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: GETS
+Dataset: Cora
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8040
+  ECE: 0.0295
+  Avg Confidence: 0.8697
+
+Calibrated Model:
+  Accuracy: 0.8240
+  ECE: 0.0280
+  Avg Confidence: 0.9016
+
+After Attack:
+  Accuracy: 0.8240
+  ECE: 0.0712
+  Avg Confidence: 0.5221
+  ECE Change: +0.0432
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 959
+Success rate: 95.90%
+Avg confidence reduction: -0.3957
+Avg perturbations: 4.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 160.37s
+Average attack time per node: 0.1532s
+Average iteration time per node: 0.1604s
+Min iteration time: 0.1052s
+Max iteration time: 1.2573s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 1708 (true_label=3): 0.8181 -> 0.2953 (-0.5229) [SUCCESS]
+Node 1709 (true_label=2): 0.9969 -> 0.4577 (-0.5391) [SUCCESS]
+Node 1710 (true_label=2): 0.9849 -> 0.2330 (-0.7519) [SUCCESS]
+Node 1711 (true_label=2): 1.0000 -> 0.8299 (-0.1701) [SUCCESS]
+Node 1712 (true_label=2): 0.9996 -> 0.6174 (-0.3822) [SUCCESS]
+Node 1713 (true_label=0): 0.6619 -> 0.2744 (-0.3875) [SUCCESS]
+Node 1714 (true_label=2): 0.9999 -> 0.5435 (-0.4563) [SUCCESS]
+Node 1715 (true_label=2): 0.9971 -> 0.5684 (-0.4287) [SUCCESS]
+Node 1716 (true_label=2): 1.0000 -> 0.4054 (-0.5946) [SUCCESS]
+Node 1717 (true_label=2): 1.0000 -> 0.5280 (-0.4719) [SUCCESS]

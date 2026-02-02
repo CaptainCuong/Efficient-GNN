@@ -1,4 +1,4 @@
-logs/*
+logs/*.json
 data/*
 calibration_results/*
 **.gz

@@ -1,0 +1,54 @@
+================================================================================
+UGCA ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260201_164158
+Attack Type: UGCA (flip_beam_hybridloss_attack)
+Calibration Method: GETS
+Dataset: PubMed
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.7670
+  ECE: 0.0678
+  Avg Confidence: 0.8489
+
+Calibrated Model:
+  Accuracy: 0.7880
+  ECE: 0.0748
+  Avg Confidence: 0.8804
+
+After Attack:
+  Accuracy: 0.7880
+  ECE: 0.1199
+  Avg Confidence: 0.5340
+  ECE Change: +0.0451
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 934
+Success rate: 93.40%
+Avg confidence reduction: -0.3709
+Avg perturbations: 3.7
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 8030.08s
+Average attack time per node: 7.9660s
+Average iteration time per node: 8.0301s
+Min iteration time: 5.6372s
+Max iteration time: 15.3413s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 18717 (true_label=2): 1.0000 -> 0.9723 (-0.0277) [SUCCESS]
+Node 18718 (true_label=1): 0.6157 -> 0.4425 (-0.1732) [SUCCESS]
+Node 18719 (true_label=2): 1.0000 -> 1.0000 (-0.0000) [SUCCESS]
+Node 18720 (true_label=1): 1.0000 -> 0.9999 (-0.0001) [SUCCESS]
+Node 18721 (true_label=1): 1.0000 -> 0.4966 (-0.5034) [SUCCESS]
+Node 18722 (true_label=2): 1.0000 -> 1.0000 (+0.0000) [FAILED]
+Node 18723 (true_label=2): 0.9978 -> 0.3858 (-0.6120) [SUCCESS]
+Node 18724 (true_label=2): 1.0000 -> 1.0000 (+0.0000) [FAILED]
+Node 18725 (true_label=2): 0.8575 -> 0.5067 (-0.3507) [SUCCESS]
+Node 18726 (true_label=2): 0.7024 -> 0.3930 (-0.3094) [SUCCESS]
