@@ -16,7 +16,7 @@ import utils.ece as ece
 
 def main():
     # Load JSON log file
-    json_path = "./logs/ugca_full_cora_vs_attack_log_20260201_114843.json"
+    json_path = "./logs/ugca_rerank_basic_citeseer_ets_attack_log_20260201_213338.json"
 
     with open(json_path, 'r') as f:
         log_data = json.load(f)

@@ -689,7 +689,7 @@ def main():
         "learning_rate": 0.01,
         "weight_decay": 5e-4
     }
-    test_node_indices = [2378]
+    
     attack_results = run_attack_on_nodes(
         attack_model=calibrated_model,  # Use calibrated model for gradient computation
         calibrated_model=calibrated_model,  # Attack the calibrated model
