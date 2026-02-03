@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_110629
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: CaGCN
+Dataset: Photo
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9268
+  ECE: 0.0105
+  Avg Confidence: 0.9268
+
+Calibrated Model:
+  Accuracy: 0.9307
+  ECE: 0.0066
+  Avg Confidence: 0.9379
+
+After Attack:
+  Accuracy: 0.9340
+  ECE: 0.0247
+  Avg Confidence: 0.8098
+  ECE Change: +0.0180
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 909
+Success rate: 90.90%
+Avg confidence reduction: -0.1443
+Avg perturbations: 4.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 607.90s
+Average attack time per node: 0.5919s
+Average iteration time per node: 0.6079s
+Min iteration time: 0.4984s
+Max iteration time: 0.8575s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 1 (true_label=4): 0.9998 -> 0.9804 (-0.0193) [SUCCESS]
+Node 15 (true_label=2): 0.5142 -> 0.3485 (-0.1657) [SUCCESS]
+Node 34 (true_label=7): 0.9966 -> 0.5571 (-0.4395) [SUCCESS]
+Node 41 (true_label=7): 0.9935 -> 0.9357 (-0.0578) [SUCCESS]
+Node 42 (true_label=6): 0.9971 -> 0.9950 (-0.0022) [SUCCESS]
+Node 43 (true_label=1): 1.0000 -> 0.9960 (-0.0040) [SUCCESS]
+Node 44 (true_label=0): 0.9514 -> 0.6292 (-0.3222) [SUCCESS]
+Node 46 (true_label=1): 0.9999 -> 0.9272 (-0.0727) [SUCCESS]
+Node 50 (true_label=4): 0.9304 -> 0.4125 (-0.5180) [SUCCESS]
+Node 52 (true_label=1): 0.9999 -> 0.9460 (-0.0539) [SUCCESS]

@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER_KL ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_024007
+Attack Type: UGCA (attack with under_kl strategy - KL divergence with uniform)
+Calibration Method: GATS
+Dataset: Ogbn-arxiv
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.5683
+  ECE: 0.0083
+  Avg Confidence: 0.5020
+
+Calibrated Model:
+  Accuracy: 0.5683
+  ECE: 0.0079
+  Avg Confidence: 0.5630
+
+After Attack:
+  Accuracy: 0.5730
+  ECE: 0.0115
+  Avg Confidence: 0.4423
+  ECE Change: +0.0036
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 268
+Success rate: 26.80%
+Avg confidence reduction: -0.4901
+Avg perturbations: 0.9
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 3704.33s
+Average attack time per node: 3.6644s
+Average iteration time per node: 3.7043s
+Min iteration time: 3.4039s
+Max iteration time: 4.5712s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 45 (true_label=4): 0.1558 -> 0.1558 (+0.0000) [FAILED]
+Node 47 (true_label=20): 0.2943 -> 0.2943 (+0.0000) [FAILED]
+Node 53 (true_label=16): 0.4924 -> 0.4924 (+0.0000) [FAILED]
+Node 71 (true_label=24): 0.3484 -> 0.3019 (-0.0464) [SUCCESS]
+Node 73 (true_label=24): 0.7266 -> 0.7266 (+0.0000) [FAILED]
+Node 74 (true_label=28): 0.7979 -> 0.7979 (+0.0000) [FAILED]
+Node 75 (true_label=24): 0.4196 -> 0.2670 (-0.1526) [SUCCESS]
+Node 76 (true_label=24): 0.5277 -> 0.5277 (+0.0000) [FAILED]
+Node 77 (true_label=20): 0.9270 -> 0.1782 (-0.7488) [SUCCESS]
+Node 78 (true_label=16): 0.9015 -> 0.2689 (-0.6326) [SUCCESS]

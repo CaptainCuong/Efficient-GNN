@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_125105
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: VS
+Dataset: Reddit
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9146
+  ECE: 0.0019
+  Avg Confidence: 0.9159
+
+Calibrated Model:
+  Accuracy: 0.9161
+  ECE: 0.0021
+  Avg Confidence: 0.9400
+
+After Attack:
+  Accuracy: 0.9170
+  ECE: 0.0042
+  Avg Confidence: 0.8261
+  ECE Change: +0.0021
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 716
+Success rate: 71.60%
+Avg confidence reduction: -0.1581
+Avg perturbations: 3.1
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 4012.68s
+Average attack time per node: 3.9358s
+Average iteration time per node: 4.0127s
+Min iteration time: 3.5559s
+Max iteration time: 4.7829s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 0 (true_label=31): 0.9955 -> 0.9932 (-0.0024) [SUCCESS]
+Node 2 (true_label=28): 0.9012 -> 0.6492 (-0.2520) [SUCCESS]
+Node 3 (true_label=2): 0.9959 -> 0.9959 (+0.0000) [FAILED]
+Node 9 (true_label=22): 0.9121 -> 0.7686 (-0.1436) [SUCCESS]
+Node 10 (true_label=22): 0.9111 -> 0.4651 (-0.4460) [SUCCESS]
+Node 18 (true_label=38): 0.9915 -> 0.9915 (+0.0000) [FAILED]
+Node 20 (true_label=8): 0.9625 -> 0.9625 (+0.0000) [FAILED]
+Node 21 (true_label=15): 0.9993 -> 0.9973 (-0.0021) [SUCCESS]
+Node 26 (true_label=9): 0.9985 -> 0.9698 (-0.0287) [SUCCESS]
+Node 31 (true_label=36): 0.9958 -> 0.7768 (-0.2190) [SUCCESS]

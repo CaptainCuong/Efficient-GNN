@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_102928
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: ETS
+Dataset: Physics
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9574
+  ECE: 0.0063
+  Avg Confidence: 0.9622
+
+Calibrated Model:
+  Accuracy: 0.9574
+  ECE: 0.0063
+  Avg Confidence: 0.9612
+
+After Attack:
+  Accuracy: 0.9560
+  ECE: 0.0761
+  Avg Confidence: 0.7640
+  ECE Change: +0.0698
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 767
+Success rate: 76.70%
+Avg confidence reduction: -0.2623
+Avg perturbations: 2.4
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 7523.45s
+Average attack time per node: 6.9516s
+Average iteration time per node: 7.5234s
+Min iteration time: 5.3759s
+Max iteration time: 9.9876s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 8 (true_label=4): 0.9985 -> 0.7860 (-0.2125) [SUCCESS]
+Node 15 (true_label=0): 0.9979 -> 0.7885 (-0.2095) [SUCCESS]
+Node 18 (true_label=2): 0.9944 -> 0.7491 (-0.2453) [SUCCESS]
+Node 23 (true_label=2): 0.9973 -> 0.6463 (-0.3510) [SUCCESS]
+Node 25 (true_label=1): 0.9988 -> 0.9954 (-0.0034) [SUCCESS]
+Node 28 (true_label=4): 0.9987 -> 0.5974 (-0.4013) [SUCCESS]
+Node 32 (true_label=1): 0.9973 -> 0.5201 (-0.4771) [SUCCESS]
+Node 33 (true_label=0): 0.9989 -> 0.5291 (-0.4698) [SUCCESS]
+Node 35 (true_label=2): 0.9906 -> 0.9906 (+0.0000) [FAILED]
+Node 39 (true_label=3): 0.9883 -> 0.8066 (-0.1817) [SUCCESS]

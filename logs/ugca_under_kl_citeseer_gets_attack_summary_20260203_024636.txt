@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER_KL ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_024636
+Attack Type: UGCA (attack with under_kl strategy - KL divergence with uniform)
+Calibration Method: GETS
+Dataset: CiteSeer
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.6740
+  ECE: 0.0615
+  Avg Confidence: 0.8238
+
+Calibrated Model:
+  Accuracy: 0.7210
+  ECE: 0.0440
+  Avg Confidence: 0.8194
+
+After Attack:
+  Accuracy: 0.7210
+  ECE: 0.0565
+  Avg Confidence: 0.6052
+  ECE Change: +0.0124
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 496
+Success rate: 49.60%
+Avg confidence reduction: -0.4319
+Avg perturbations: 1.6
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 139.68s
+Average attack time per node: 0.1287s
+Average iteration time per node: 0.1397s
+Min iteration time: 0.1121s
+Max iteration time: 0.2071s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2312 (true_label=4): 0.8111 -> 0.2570 (-0.5541) [SUCCESS]
+Node 2313 (true_label=5): 0.5141 -> 0.5141 (+0.0000) [FAILED]
+Node 2314 (true_label=4): 0.8707 -> 0.3144 (-0.5563) [SUCCESS]
+Node 2315 (true_label=4): 0.9566 -> 0.9566 (+0.0000) [FAILED]
+Node 2316 (true_label=4): 1.0000 -> 0.9993 (-0.0007) [SUCCESS]
+Node 2317 (true_label=1): 0.5342 -> 0.5342 (+0.0000) [FAILED]
+Node 2318 (true_label=4): 0.8634 -> 0.8634 (+0.0000) [FAILED]
+Node 2319 (true_label=2): 0.9784 -> 0.2684 (-0.7101) [SUCCESS]
+Node 2320 (true_label=3): 0.9977 -> 0.4217 (-0.5760) [SUCCESS]
+Node 2321 (true_label=3): 0.9819 -> 0.2341 (-0.7478) [SUCCESS]

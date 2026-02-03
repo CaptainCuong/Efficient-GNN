@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_093733
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: GETS
+Dataset: PubMed
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.7760
+  ECE: 0.0536
+  Avg Confidence: 0.8433
+
+Calibrated Model:
+  Accuracy: 0.7950
+  ECE: 0.0553
+  Avg Confidence: 0.8713
+
+After Attack:
+  Accuracy: 0.7950
+  ECE: 0.0540
+  Avg Confidence: 0.7635
+  ECE Change: -0.0013
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 395
+Success rate: 39.50%
+Avg confidence reduction: -0.2731
+Avg perturbations: 1.1
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 3742.43s
+Average attack time per node: 3.6781s
+Average iteration time per node: 3.7424s
+Min iteration time: 3.4265s
+Max iteration time: 6.1526s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 18717 (true_label=2): 0.9996 -> 0.9336 (-0.0660) [SUCCESS]
+Node 18718 (true_label=1): 0.7957 -> 0.7957 (+0.0000) [FAILED]
+Node 18719 (true_label=2): 1.0000 -> 0.9988 (-0.0012) [SUCCESS]
+Node 18720 (true_label=1): 1.0000 -> 0.9985 (-0.0015) [SUCCESS]
+Node 18721 (true_label=1): 0.9998 -> 0.4071 (-0.5927) [SUCCESS]
+Node 18722 (true_label=2): 1.0000 -> 0.9996 (-0.0004) [SUCCESS]
+Node 18723 (true_label=2): 0.9689 -> 0.7865 (-0.1824) [SUCCESS]
+Node 18724 (true_label=2): 1.0000 -> 1.0000 (-0.0000) [SUCCESS]
+Node 18725 (true_label=2): 0.9974 -> 0.6939 (-0.3035) [SUCCESS]
+Node 18726 (true_label=2): 0.6133 -> 0.4911 (-0.1222) [SUCCESS]

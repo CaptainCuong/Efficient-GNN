@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_103843
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: GETS
+Dataset: Ogbn-arxiv
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.5469
+  ECE: 0.0086
+  Avg Confidence: 0.4874
+
+Calibrated Model:
+  Accuracy: 0.5507
+  ECE: 0.0074
+  Avg Confidence: 0.6414
+
+After Attack:
+  Accuracy: 0.5640
+  ECE: 0.0076
+  Avg Confidence: 0.5782
+  ECE Change: +0.0003
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 155
+Success rate: 15.50%
+Avg confidence reduction: -0.4410
+Avg perturbations: 0.3
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 3581.68s
+Average attack time per node: 3.5403s
+Average iteration time per node: 3.5817s
+Min iteration time: 3.4725s
+Max iteration time: 4.3166s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 70 (true_label=18): 0.3082 -> 0.3082 (+0.0000) [FAILED]
+Node 74 (true_label=25): 0.5187 -> 0.5187 (+0.0000) [FAILED]
+Node 75 (true_label=8): 0.7876 -> 0.7876 (+0.0000) [FAILED]
+Node 76 (true_label=16): 0.2891 -> 0.2891 (+0.0000) [FAILED]
+Node 77 (true_label=16): 0.9155 -> 0.9155 (+0.0000) [FAILED]
+Node 78 (true_label=19): 0.8233 -> 0.8233 (+0.0000) [FAILED]
+Node 79 (true_label=5): 0.7640 -> 0.7640 (+0.0000) [FAILED]
+Node 80 (true_label=30): 0.9977 -> 0.9094 (-0.0883) [SUCCESS]
+Node 81 (true_label=30): 0.6927 -> 0.6927 (+0.0000) [FAILED]
+Node 82 (true_label=16): 0.9207 -> 0.9207 (+0.0000) [FAILED]

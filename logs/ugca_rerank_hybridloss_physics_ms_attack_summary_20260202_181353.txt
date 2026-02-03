@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260202_181353
+Attack Type: UGCA (rerank_hybridloss_attack)
+Calibration Method: MS
+Dataset: Physics
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9514
+  ECE: 0.0055
+  Avg Confidence: 0.9586
+
+Calibrated Model:
+  Accuracy: 0.9382
+  ECE: 0.0190
+  Avg Confidence: 0.9730
+
+After Attack:
+  Accuracy: 0.9382
+  ECE: 0.0536
+  Avg Confidence: 0.7970
+  ECE Change: +0.0346
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 4011
+Successful attacks: 3322
+Success rate: 82.82%
+Avg confidence reduction: -0.2125
+Avg perturbations: 3.3
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 44948.83s
+Average attack time per node: 10.6330s
+Average iteration time per node: 11.2064s
+Min iteration time: 6.1853s
+Max iteration time: 14.5423s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 13 (true_label=2): 1.0000 -> 0.5669 (-0.4331) [SUCCESS]
+Node 20 (true_label=4): 0.9999 -> 0.9999 (+0.0000) [FAILED]
+Node 21 (true_label=4): 1.0000 -> 0.5743 (-0.4257) [SUCCESS]
+Node 27 (true_label=1): 0.9964 -> 0.9637 (-0.0327) [SUCCESS]
+Node 32 (true_label=0): 1.0000 -> 0.9990 (-0.0010) [SUCCESS]
+Node 45 (true_label=2): 1.0000 -> 0.5942 (-0.4058) [SUCCESS]
+Node 48 (true_label=2): 0.9999 -> 0.7217 (-0.2782) [SUCCESS]
+Node 49 (true_label=2): 0.9989 -> 0.7406 (-0.2583) [SUCCESS]
+Node 66 (true_label=0): 1.0000 -> 0.5026 (-0.4974) [SUCCESS]
+Node 69 (true_label=0): 1.0000 -> 0.9947 (-0.0053) [SUCCESS]

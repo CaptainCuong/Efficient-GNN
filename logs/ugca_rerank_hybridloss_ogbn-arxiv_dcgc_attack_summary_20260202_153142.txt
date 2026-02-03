@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260202_153142
+Attack Type: UGCA (rerank_hybridloss_attack)
+Calibration Method: DCGC
+Dataset: Ogbn-arxiv
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.5535
+  ECE: 0.0086
+  Avg Confidence: 0.4935
+
+Calibrated Model:
+  Accuracy: 0.5546
+  ECE: 0.0083
+  Avg Confidence: 0.5050
+
+After Attack:
+  Accuracy: 0.5546
+  ECE: 0.0101
+  Avg Confidence: 0.4093
+  ECE Change: +0.0018
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 5772
+Successful attacks: 2303
+Success rate: 39.90%
+Avg confidence reduction: -0.2399
+Avg perturbations: 1.6
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 29286.63s
+Average attack time per node: 4.8694s
+Average iteration time per node: 5.0739s
+Min iteration time: 4.2293s
+Max iteration time: 7.9609s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 64 (true_label=28): 0.7943 -> 0.7943 (+0.0000) [FAILED]
+Node 80 (true_label=19): 0.2998 -> 0.2998 (+0.0000) [FAILED]
+Node 89 (true_label=18): 0.1464 -> 0.1464 (+0.0000) [FAILED]
+Node 91 (true_label=25): 0.6113 -> 0.6113 (+0.0000) [FAILED]
+Node 93 (true_label=9): 0.3013 -> 0.3013 (+0.0000) [FAILED]
+Node 94 (true_label=28): 0.5348 -> 0.5348 (+0.0000) [FAILED]
+Node 95 (true_label=26): 0.3677 -> 0.3104 (-0.0573) [SUCCESS]
+Node 96 (true_label=5): 0.3707 -> 0.1977 (-0.1730) [SUCCESS]
+Node 97 (true_label=24): 0.5432 -> 0.5432 (+0.0000) [FAILED]
+Node 98 (true_label=4): 0.3312 -> 0.1334 (-0.1978) [SUCCESS]
