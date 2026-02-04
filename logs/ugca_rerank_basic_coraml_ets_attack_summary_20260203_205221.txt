@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_205221
+Attack Type: UGCA (rerank_attack)
+Calibration Method: ETS
+Dataset: CoraML
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8881
+  ECE: 0.0205
+  Avg Confidence: 0.9363
+
+Calibrated Model:
+  Accuracy: 0.8881
+  ECE: 0.0147
+  Avg Confidence: 0.9132
+
+After Attack:
+  Accuracy: 0.8881
+  ECE: 0.0505
+  Avg Confidence: 0.6530
+  ECE Change: +0.0357
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 599
+Successful attacks: 401
+Success rate: 66.94%
+Avg confidence reduction: -0.3887
+Avg perturbations: 2.8
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 105.03s
+Average attack time per node: 0.1699s
+Average iteration time per node: 0.1753s
+Min iteration time: 0.0856s
+Max iteration time: 0.3660s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 5 (true_label=1): 0.9734 -> 0.9538 (-0.0196) [SUCCESS]
+Node 6 (true_label=2): 0.9675 -> 0.9675 (+0.0000) [FAILED]
+Node 7 (true_label=1): 0.9749 -> 0.4866 (-0.4883) [SUCCESS]
+Node 16 (true_label=3): 0.9745 -> 0.8531 (-0.1213) [SUCCESS]
+Node 18 (true_label=3): 0.6488 -> 0.6488 (+0.0000) [FAILED]
+Node 19 (true_label=3): 0.9750 -> 0.4371 (-0.5380) [SUCCESS]
+Node 20 (true_label=4): 0.9520 -> 0.3959 (-0.5560) [SUCCESS]
+Node 22 (true_label=5): 0.9654 -> 0.9654 (+0.0000) [FAILED]
+Node 25 (true_label=6): 0.9715 -> 0.5060 (-0.4655) [SUCCESS]
+Node 26 (true_label=6): 0.9737 -> 0.4270 (-0.5467) [SUCCESS]

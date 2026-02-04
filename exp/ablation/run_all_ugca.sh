@@ -34,7 +34,7 @@ get_log_prefix() {
 }
 
 # Check if experiment log already exists
-# Log pattern: {prefix}_{dataset}_{calibration_method}_attack_log_*.json
+# Log pattern: {prefix}_{dataset}_{calibration_method}_attack_log_*.txt
 experiment_exists() {
     local prefix="$1"
     local dataset="$2"
@@ -42,7 +42,7 @@ experiment_exists() {
 
     local dataset_lower=$(echo "$dataset" | tr '[:upper:]' '[:lower:]')
     local calib_lower=$(echo "$calib_method" | tr '[:upper:]' '[:lower:]')
-    local pattern="${LOG_DIR}/${prefix}_${dataset_lower}_${calib_lower}_*.json"
+    local pattern="${LOG_DIR}/${prefix}_${dataset_lower}_${calib_lower}_*.txt"
 
     # Check if any matching file exists
     if ls $pattern 1> /dev/null 2>&1; then
@@ -105,6 +105,13 @@ for script in "${UGCA_SCRIPTS[@]}"; do
 
     for dataset in "${DATASETS[@]}"; do
         current_run=$((current_run + 1))
+
+        # Skip CaGCN for Ogbn-arxiv and Reddit (not applicable)
+        if [ "$CALIB_METHOD" == "CaGCN" ] && { [ "$dataset" == "Ogbn-arxiv" ] || [ "$dataset" == "Reddit" ]; }; then
+            echo "[$current_run/$total_runs] SKIPPED: $script on $dataset with $CALIB_METHOD (not applicable)"
+            skipped_runs=$((skipped_runs + 1))
+            continue
+        fi
 
         # Check if experiment already exists
         if experiment_exists "$log_prefix" "$dataset" "$CALIB_METHOD"; then

@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260203_185552
+Attack Type: UGCA (rerank_attack)
+Calibration Method: VS
+Dataset: CiteSeer
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.6610
+  ECE: 0.0686
+  Avg Confidence: 0.8200
+
+Calibrated Model:
+  Accuracy: 0.6670
+  ECE: 0.0579
+  Avg Confidence: 0.7780
+
+After Attack:
+  Accuracy: 0.6670
+  ECE: 0.0737
+  Avg Confidence: 0.4811
+  ECE Change: +0.0158
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 650
+Success rate: 65.00%
+Avg confidence reduction: -0.4568
+Avg perturbations: 2.2
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 190.48s
+Average attack time per node: 0.1829s
+Average iteration time per node: 0.1905s
+Min iteration time: 0.1080s
+Max iteration time: 1.0121s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 2312 (true_label=4): 0.6472 -> 0.3003 (-0.3469) [SUCCESS]
+Node 2313 (true_label=5): 0.5655 -> 0.5655 (+0.0000) [FAILED]
+Node 2314 (true_label=4): 0.4655 -> 0.2385 (-0.2270) [SUCCESS]
+Node 2315 (true_label=4): 0.7551 -> 0.3271 (-0.4280) [SUCCESS]
+Node 2316 (true_label=4): 0.9919 -> 0.8987 (-0.0932) [SUCCESS]
+Node 2317 (true_label=1): 0.7943 -> 0.7943 (+0.0000) [FAILED]
+Node 2318 (true_label=4): 0.8062 -> 0.8062 (+0.0000) [FAILED]
+Node 2319 (true_label=2): 0.3465 -> 0.2710 (-0.0754) [SUCCESS]
+Node 2320 (true_label=3): 0.8082 -> 0.3260 (-0.4822) [SUCCESS]
+Node 2321 (true_label=3): 0.7712 -> 0.2699 (-0.5013) [SUCCESS]

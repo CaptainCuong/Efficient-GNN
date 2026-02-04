@@ -125,7 +125,7 @@ class CaGCN(nn.Module):
         Returns:
         None
         """
-        t = time.time()
+        t0 = time.time()
         best_loss = float('inf')
         patience_counter = patience
         optimizer = torch.optim.Adam([_ for _ in self.scaling_model[0].parameters()] + [_ for _ in self.scaling_model[1].parameters()], lr=0.01, weight_decay=5e-4)
@@ -143,8 +143,8 @@ class CaGCN(nn.Module):
                 print(f'epoch: {epoch}',
                     f'loss_calibration: {loss.item():.4f}',
                     f'acc_calibration: {acc:.4f}',
-                    f'time: {time.time() - t:.4f}s')
-            
+                    f'time: {time.time() - t0:.4f}s')
+
             # Early stopping
             if loss < best_loss:
                 best_loss = loss
