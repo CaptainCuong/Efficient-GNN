@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260204_225403
+Attack Type: UGCA (rerank_attack)
+Calibration Method: GATS
+Dataset: Reddit
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9143
+  ECE: 0.0020
+  Avg Confidence: 0.9140
+
+Calibrated Model:
+  Accuracy: 0.9143
+  ECE: 0.0029
+  Avg Confidence: 0.8763
+
+After Attack:
+  Accuracy: 0.9143
+  ECE: 0.0103
+  Avg Confidence: 0.6972
+  ECE Change: +0.0074
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 4833
+Successful attacks: 3800
+Success rate: 78.63%
+Avg confidence reduction: -0.2279
+Avg perturbations: 3.6
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 23570.12s
+Average attack time per node: 4.7944s
+Average iteration time per node: 4.8769s
+Min iteration time: 3.6553s
+Max iteration time: 26.6920s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 3 (true_label=18): 0.7576 -> 0.7576 (+0.0000) [FAILED]
+Node 6 (true_label=22): 0.9982 -> 0.9750 (-0.0232) [SUCCESS]
+Node 9 (true_label=38): 0.9842 -> 0.8150 (-0.1691) [SUCCESS]
+Node 11 (true_label=29): 0.2609 -> 0.2609 (+0.0000) [FAILED]
+Node 12 (true_label=0): 0.9995 -> 0.9995 (+0.0000) [FAILED]
+Node 15 (true_label=22): 0.7234 -> 0.7234 (+0.0000) [FAILED]
+Node 16 (true_label=8): 0.9765 -> 0.9297 (-0.0469) [SUCCESS]
+Node 28 (true_label=23): 0.9672 -> 0.9460 (-0.0212) [SUCCESS]
+Node 34 (true_label=27): 0.9831 -> 0.9831 (+0.0000) [FAILED]
+Node 35 (true_label=23): 0.8593 -> 0.2528 (-0.6065) [SUCCESS]

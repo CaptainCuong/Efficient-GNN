@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER_KL ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260204_194020
+Attack Type: UGCA (attack with under_kl strategy - KL divergence with uniform)
+Calibration Method: DCGC
+Dataset: Physics
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.9508
+  ECE: 0.0072
+  Avg Confidence: 0.9631
+
+Calibrated Model:
+  Accuracy: 0.9498
+  ECE: 0.0132
+  Avg Confidence: 0.9809
+
+After Attack:
+  Accuracy: 0.9640
+  ECE: 0.0079
+  Avg Confidence: 0.9653
+  ECE Change: -0.0053
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 560
+Success rate: 56.00%
+Avg confidence reduction: -0.0276
+Avg perturbations: 4.4
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 22620.51s
+Average attack time per node: 20.2577s
+Average iteration time per node: 22.6205s
+Min iteration time: 11.1208s
+Max iteration time: 28.9945s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 3 (true_label=0): 1.0000 -> 1.0000 (+0.0000) [FAILED]
+Node 5 (true_label=2): 0.9991 -> 0.9991 (-0.0000) [SUCCESS]
+Node 6 (true_label=1): 0.9955 -> 0.9765 (-0.0190) [SUCCESS]
+Node 7 (true_label=1): 0.9996 -> 0.9991 (-0.0005) [SUCCESS]
+Node 10 (true_label=1): 0.5988 -> 0.5988 (+0.0000) [FAILED]
+Node 15 (true_label=0): 0.9999 -> 0.9982 (-0.0017) [SUCCESS]
+Node 17 (true_label=0): 1.0000 -> 1.0000 (+0.0000) [FAILED]
+Node 25 (true_label=1): 0.9997 -> 0.9997 (+0.0000) [FAILED]
+Node 26 (true_label=0): 0.9970 -> 0.9807 (-0.0163) [SUCCESS]
+Node 34 (true_label=1): 0.9994 -> 0.9990 (-0.0004) [SUCCESS]

@@ -24,8 +24,7 @@ def main():
     # Extract data from log
     detailed_results = log_data["detailed_results"]
     num_classes = log_data["experiment_info"]["config"]["num_classes"]
-
-    # Get probabilities and labels from log
+ 
     original_probs = np.array([r["original_probs"] for r in detailed_results])
     attacked_probs = np.array([r["attacked_probs"] for r in detailed_results])
     true_labels = np.array([r["true_label"] for r in detailed_results])

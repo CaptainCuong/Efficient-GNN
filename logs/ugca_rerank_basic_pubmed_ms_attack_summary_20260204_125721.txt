@@ -1,0 +1,54 @@
+================================================================================
+UGCA RERANK BASIC ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260204_125721
+Attack Type: UGCA (rerank_attack)
+Calibration Method: MS
+Dataset: PubMed
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.7730
+  ECE: 0.0520
+  Avg Confidence: 0.8373
+
+Calibrated Model:
+  Accuracy: 0.7710
+  ECE: 0.0576
+  Avg Confidence: 0.8500
+
+After Attack:
+  Accuracy: 0.7710
+  ECE: 0.0762
+  Avg Confidence: 0.7226
+  ECE Change: +0.0185
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 413
+Success rate: 41.30%
+Avg confidence reduction: -0.3084
+Avg perturbations: 1.3
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 4133.91s
+Average attack time per node: 4.0735s
+Average iteration time per node: 4.1339s
+Min iteration time: 3.5664s
+Max iteration time: 11.3453s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 18717 (true_label=2): 0.8065 -> 0.5660 (-0.2404) [SUCCESS]
+Node 18718 (true_label=1): 0.9012 -> 0.9012 (+0.0000) [FAILED]
+Node 18719 (true_label=2): 0.9749 -> 0.9448 (-0.0300) [SUCCESS]
+Node 18720 (true_label=1): 0.9728 -> 0.7669 (-0.2059) [SUCCESS]
+Node 18721 (true_label=1): 0.9906 -> 0.9906 (+0.0000) [FAILED]
+Node 18722 (true_label=2): 0.9822 -> 0.9491 (-0.0331) [SUCCESS]
+Node 18723 (true_label=2): 0.9618 -> 0.4550 (-0.5068) [SUCCESS]
+Node 18724 (true_label=2): 0.9798 -> 0.9266 (-0.0532) [SUCCESS]
+Node 18725 (true_label=2): 0.9321 -> 0.7688 (-0.1633) [SUCCESS]
+Node 18726 (true_label=2): 0.4498 -> 0.3690 (-0.0808) [SUCCESS]

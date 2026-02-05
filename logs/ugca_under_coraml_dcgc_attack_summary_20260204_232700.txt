@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260204_232700
+Attack Type: UGCA (attack with under strategy)
+Calibration Method: DCGC
+Dataset: CoraML
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8664
+  ECE: 0.0204
+  Avg Confidence: 0.9297
+
+Calibrated Model:
+  Accuracy: 0.8631
+  ECE: 0.0309
+  Avg Confidence: 0.9737
+
+After Attack:
+  Accuracy: 0.8631
+  ECE: 0.0279
+  Avg Confidence: 0.9391
+  ECE Change: -0.0029
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 599
+Successful attacks: 347
+Success rate: 57.93%
+Avg confidence reduction: -0.0597
+Avg perturbations: 3.4
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 143.51s
+Average attack time per node: 0.2162s
+Average iteration time per node: 0.2396s
+Min iteration time: 0.1401s
+Max iteration time: 0.2948s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 8 (true_label=0): 0.9967 -> 0.9967 (+0.0000) [FAILED]
+Node 9 (true_label=1): 0.9944 -> 0.8264 (-0.1680) [SUCCESS]
+Node 14 (true_label=3): 0.9997 -> 0.9997 (+0.0000) [FAILED]
+Node 23 (true_label=0): 0.9996 -> 0.9904 (-0.0092) [SUCCESS]
+Node 26 (true_label=6): 0.9985 -> 0.9975 (-0.0010) [SUCCESS]
+Node 27 (true_label=6): 0.9995 -> 0.9985 (-0.0010) [SUCCESS]
+Node 29 (true_label=6): 0.9995 -> 0.9969 (-0.0026) [SUCCESS]
+Node 33 (true_label=6): 0.9988 -> 0.9983 (-0.0005) [SUCCESS]
+Node 35 (true_label=6): 0.9990 -> 0.9973 (-0.0017) [SUCCESS]
+Node 42 (true_label=6): 0.9980 -> 0.9980 (+0.0000) [FAILED]

@@ -1,0 +1,54 @@
+================================================================================
+UGCA UNDER_KL ATTACK EXPERIMENT SUMMARY
+================================================================================
+Timestamp: 20260204_100958
+Attack Type: UGCA (attack with under_kl strategy - KL divergence with uniform)
+Calibration Method: DCGC
+Dataset: Cora
+
+MODEL PERFORMANCE:
+----------------------------------------
+Base Model:
+  Accuracy: 0.8090
+  ECE: 0.0294
+  Avg Confidence: 0.8680
+
+Calibrated Model:
+  Accuracy: 0.8160
+  ECE: 0.0318
+  Avg Confidence: 0.9099
+
+After Attack:
+  Accuracy: 0.8160
+  ECE: 0.0282
+  Avg Confidence: 0.8579
+  ECE Change: -0.0036
+
+ATTACK RESULTS:
+----------------------------------------
+Total nodes attacked: 1000
+Successful attacks: 562
+Success rate: 56.20%
+Avg confidence reduction: -0.0925
+Avg perturbations: 3.0
+
+TIMING STATISTICS:
+----------------------------------------
+Total time: 131.96s
+Average attack time per node: 0.1185s
+Average iteration time per node: 0.1320s
+Min iteration time: 0.0781s
+Max iteration time: 0.1790s
+
+SAMPLE RESULTS:
+----------------------------------------
+Node 1708 (true_label=3): 0.3472 -> 0.3472 (+0.0000) [FAILED]
+Node 1709 (true_label=2): 0.9980 -> 0.9940 (-0.0040) [SUCCESS]
+Node 1710 (true_label=2): 0.9848 -> 0.8039 (-0.1809) [SUCCESS]
+Node 1711 (true_label=2): 0.9994 -> 0.9992 (-0.0002) [SUCCESS]
+Node 1712 (true_label=2): 0.9968 -> 0.9050 (-0.0918) [SUCCESS]
+Node 1713 (true_label=0): 0.7380 -> 0.7380 (+0.0000) [FAILED]
+Node 1714 (true_label=2): 0.9987 -> 0.9908 (-0.0079) [SUCCESS]
+Node 1715 (true_label=2): 0.9976 -> 0.9706 (-0.0270) [SUCCESS]
+Node 1716 (true_label=2): 0.9927 -> 0.9915 (-0.0012) [SUCCESS]
+Node 1717 (true_label=2): 0.9982 -> 0.9688 (-0.0294) [SUCCESS]
