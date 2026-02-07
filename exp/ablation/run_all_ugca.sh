@@ -107,7 +107,7 @@ for script in "${UGCA_SCRIPTS[@]}"; do
         current_run=$((current_run + 1))
 
         # Skip CaGCN for Ogbn-arxiv and Reddit (not applicable)
-        if [ "$CALIB_METHOD" == "CaGCN" ] && { [ "$dataset" == "Ogbn-arxiv" ] || [ "$dataset" == "Reddit" ]; }; then
+        if [ "$CALIB_METHOD" == "CaGCN" ] && { [ "$dataset" == "Reddit" ]; }; then
             echo "[$current_run/$total_runs] SKIPPED: $script on $dataset with $CALIB_METHOD (not applicable)"
             skipped_runs=$((skipped_runs + 1))
             continue
